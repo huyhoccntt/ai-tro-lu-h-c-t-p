@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Trợ Lý Học Đường | AI Cá nhân hóa cho học sinh THPT</title>
+    <meta name="description" content="Nền tảng AI đầu tiên tại Việt Nam giúp học sinh lớp 10-12 hiểu sâu bản chất, bứt phá điểm số với trợ giảng 24/7 và phân tích lỗ hổng kiến thức thông minh." />
+    <!-- Google Fonts & modern CSS reset -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+        background-color: #ffffff;
+        color: #0a0f2c;
+        line-height: 1.4;
+        scroll-behavior: smooth;
+      }
+
+      .page {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* header & navigation */
+      .header {
+        background-color: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid #eef2f6;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+      }
+
+      .header-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        font-size: 1.35rem;
+        letter-spacing: -0.3px;
+        color: #0f172a;
+      }
+
+      .brand-mark {
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(135deg, #2563eb, #1e40af);
+        color: white;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1.4rem;
+        box-shadow: 0 8px 16px -6px rgba(37, 99, 235, 0.25);
+      }
+
+      .nav {
+        display: flex;
+        gap: 32px;
+      }
+
+      .nav a {
+        text-decoration: none;
+        font-weight: 500;
+        color: #1e293b;
+        transition: color 0.2s;
+        font-size: 0.95rem;
+      }
+
+      .nav a:hover {
+        color: #2563eb;
+      }
+
+      .header-actions {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .link-button {
+        text-decoration: none;
+        font-weight: 500;
+        color: #334155;
+        transition: color 0.2s;
+      }
+
+      .link-button:hover {
+        color: #2563eb;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 24px;
+        border-radius: 40px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: all 0.25s ease;
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+
+      .btn-primary {
+        background: #0f172a;
+        color: white;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      .btn-primary:hover {
+        background: #1e293b;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px -8px rgba(15, 23, 42, 0.3);
+      }
+
+      .btn-secondary {
+        background: #f1f5f9;
+        color: #0f172a;
+        border: 1px solid #e2e8f0;
+      }
+
+      .btn-secondary:hover {
+        background: #e6edf5;
+        border-color: #cbd5e1;
+        transform: translateY(-1px);
+      }
+
+      .btn-sm {
+        padding: 6px 20px;
+        font-size: 0.85rem;
+      }
+
+      /* Hero section */
+      .hero {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 64px 32px 80px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+      }
+
+      .eyebadge {
+        display: inline-block;
+        background: #eef4ff;
+        color: #1e40af;
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 6px 14px;
+        border-radius: 40px;
+        margin-bottom: 20px;
+        letter-spacing: -0.2px;
+      }
+
+      .hero-title {
+        font-size: 3.2rem;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        color: #0a0f2c;
+        margin-bottom: 20px;
+      }
+
+      .hero-title strong {
+        color: #2563eb;
+        font-weight: 800;
+        position: relative;
+      }
+
+      .hero-text {
+        font-size: 1.1rem;
+        color: #334155;
+        line-height: 1.5;
+        max-width: 90%;
+      }
+
+      .button-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .hero-card {
+        background: linear-gradient(145deg, #f8fafc, #ffffff);
+        border-radius: 36px;
+        box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.02);
+        height: 360px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #eef2ff;
+        color: #94a3b8;
+        font-weight: 500;
+        font-size: 1.1rem;
+        backdrop-filter: blur(2px);
+        transition: all 0.2s;
+      }
+
+      /* sections */
+      .section {
+        padding: 80px 32px;
+      }
+
+      .bg-white {
+        background-color: #ffffff;
+      }
+
+      .bg-soft {
+        background-color: #f9fafc;
+      }
+
+      .section-title {
+        max-width: 720px;
+        margin: 0 auto 56px auto;
+        text-align: center;
+      }
+
+      .section-title h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin-bottom: 16px;
+        color: #0f172a;
+      }
+
+      .section-title p {
+        font-size: 1.05rem;
+        color: #475569;
+        line-height: 1.5;
+      }
+
+      .features {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 32px;
+      }
+
+      .feature-card {
+        background: white;
+        border-radius: 28px;
+        padding: 32px 24px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+        border: 1px solid #edf2f7;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 24px 40px -18px rgba(0, 0, 0, 0.12);
+        border-color: #d9e6ff;
+      }
+
+      .feature-icon {
+        width: 52px;
+        height: 52px;
+        background: #eef2ff;
+        border-radius: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #2563eb;
+        margin-bottom: 24px;
+      }
+
+      .feature-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+        letter-spacing: -0.3px;
+      }
+
+      .feature-desc {
+        color: #475569;
+        line-height: 1.5;
+      }
+
+      /* impact section */
+      .impact-grid {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 56px;
+        align-items: center;
+      }
+
+      .impact-grid h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 28px;
+        letter-spacing: -0.3px;
+      }
+
+      .impact-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .impact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .impact-dot {
+        background: #dcfce7;
+        color: #15803d;
+        width: 26px;
+        height: 26px;
+        border-radius: 30px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+      }
+
+      .impact-item p {
+        font-size: 1.05rem;
+        font-weight: 500;
+        color: #1e293b;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .stat-card {
+        background: white;
+        border-radius: 32px;
+        padding: 28px 20px;
+        text-align: center;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03);
+        border: 1px solid #eef2f6;
+        transition: all 0.2s;
+      }
+
+      .stat-card.primary {
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: white;
+        border: none;
+      }
+
+      .stat-card.primary .stat-label {
+        color: #cbd5e1;
+      }
+
+      .stat-value {
+        font-size: 2.6rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin-bottom: 8px;
+      }
+
+      .stat-label {
+        font-weight: 500;
+        color: #475569;
+        font-size: 0.9rem;
+      }
+
+      /* cta */
+      .cta {
+        background: linear-gradient(120deg, #0a0f2c, #0f172a);
+        max-width: 1100px;
+        margin: 0 auto;
+        border-radius: 64px;
+        padding: 64px 48px;
+        text-align: center;
+        color: white;
+        box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.3);
+      }
+
+      .cta h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+        letter-spacing: -0.3px;
+      }
+
+      .cta p {
+        font-size: 1.1rem;
+        opacity: 0.85;
+        max-width: 550px;
+        margin: 0 auto;
+      }
+
+      .cta .btn-primary {
+        background: white;
+        color: #0f172a;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+      }
+
+      .cta .btn-primary:hover {
+        background: #f1f5f9;
+        transform: scale(1.02);
+      }
+
+      /* footer */
+      .footer {
+        border-top: 1px solid #eef2f6;
+        background: #ffffff;
+        padding: 36px 32px;
+        margin-top: auto;
+      }
+
+      .footer-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .footer-text {
+        color: #5b6e8c;
+        font-size: 0.85rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .hero-text {
+          max-width: 100%;
+        }
+        .impact-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .stats-grid {
+          max-width: 480px;
+          margin: 0 auto;
+        }
+        .header-inner {
+          padding: 0 24px;
+        }
+        .nav {
+          display: none;
+        }
+        .hero-title {
+          font-size: 2.5rem;
+        }
+        .section {
+          padding: 60px 24px;
+        }
+        .cta {
+          padding: 48px 28px;
+        }
+        .cta h2 {
+          font-size: 1.8rem;
+        }
+        .footer-inner {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .button-group {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .btn {
+          text-align: center;
+          justify-content: center;
+        }
+        .hero-card {
+          height: 240px;
+        }
+        .feature-card {
+          padding: 24px 20px;
+        }
+        .stat-value {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="header-inner">
+          <div class="brand">
+            <div class="brand-mark">H</div>
+            <div>Trợ Lý Học Đường</div>
+          </div>
+          <nav class="nav">
+            <a href="#features">Tính năng</a>
+            <a href="#impact">Tác động</a>
+            <a href="#ready">Bắt đầu học</a>
+          </nav>
+          <div class="header-actions">
+            <a href="login.html" class="link-button">Đăng nhập</a>
+            <a href="signup.html" class="btn btn-primary btn-sm">Học thử ngay</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebadge">✨ Giải pháp AI cho học sinh lớp 10-12</div>
+            <h1 class="hero-title">Hiểu sâu bản chất <strong>Bứt phá điểm số</strong></h1>
+            <p class="hero-text">Nền tảng AI đầu tiên tại Việt Nam giúp học sinh THPT phát hiện lỗ hổng kiến thức và rèn luyện tư duy thay vì chỉ cung cấp lời giải mẫu.</p>
+            <div class="button-group" style="margin-top:28px;">
+              <a href="login.html" class="btn btn-primary">Đăng nhập</a>
+              <a href="signup.html" class="btn btn-secondary">Tạo tài khoản</a>
+              <a href="dashboard.html" class="btn btn-secondary">Bảng điều khiển</a>
+              <a href="contact.html" class="btn btn-secondary">Liên hệ</a>
+            </div>
+          </div>
+          <div class="hero-card">
+            <span>🧠 AI Tutor · Học thông minh hơn</span>
+          </div>
+        </div>
+      </main>
+
+      <section id="features" class="section bg-white">
+        <div class="section-title">
+          <h2>Giải pháp cho mọi vấn đề học tập</h2>
+          <p>Tối ưu hóa thời gian, giảm phụ thuộc vào học thêm truyền thống bằng công nghệ AI tiên tiến.</p>
+        </div>
+        <div class="features">
+          <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3 class="feature-title">Phân tích lỗi sai</h3>
+            <p class="feature-desc">AI không chỉ đưa đáp án mà chỉ rõ tại sao em lại sai ở từng bước giải, từ đó hiểu gốc rễ vấn đề.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔄</div>
+            <h3 class="feature-title">Đa dạng góc nhìn</h3>
+            <p class="feature-desc">Gợi ý nhiều cách giải khác nhau để rèn luyện tư duy linh hoạt, tự tin trước mọi dạng bài.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3 class="feature-title">Phát hiện lỗ hổng</h3>
+            <p class="feature-desc">Dựa trên lịch sử làm bài để chỉ ra phần kiến thức em đang bị hổng và đề xuất lộ trình ôn tập cá nhân hóa.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⏳</div>
+            <h3 class="feature-title">Trợ giảng 24/7</h3>
+            <p class="feature-desc">Học mọi lúc mọi nơi, giải đáp ngay lập tức những khái niệm khó hiểu, không lo mất gốc.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="impact" class="section bg-soft">
+        <div class="impact-grid">
+          <div>
+            <h2>Công bằng trong giáo dục</h2>
+            <div class="impact-list">
+              <div class="impact-item"><div class="impact-dot">✓</div><p>Giảm 60% chi phí và thời gian đi học thêm.</p></div>
+              <div class="impact-item"><div class="impact-dot">✓</div><p>Cải thiện điểm số trung bình từ 1.5 - 2 điểm sau 3 tháng.</p></div>
+              <div class="impact-item"><div class="impact-dot">✓</div><p>Học sinh vùng sâu vùng xa tiếp cận kiến thức chất lượng cao.</p></div>
+              <div class="impact-item"><div class="impact-dot">✓</div><p>Phụ huynh dễ dàng theo sát tiến độ học tập của con.</p></div>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card"><p class="stat-value">2.3M</p><p class="stat-label">Học sinh THPT</p></div>
+            <div class="stat-card primary"><p class="stat-value">5%</p><p class="stat-label">Mục tiêu tiếp cận</p></div>
+            <div class="stat-card"><p class="stat-value">24/7</p><p class="stat-label">Thời gian hỗ trợ</p></div>
+            <div class="stat-card"><p class="stat-value">12+</p><p class="stat-label">Môn học hỗ trợ</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="cta" id="ready">
+          <h2>Sẵn sàng để bứt phá điểm số?</h2>
+          <p>Gia nhập hàng ngàn học sinh đang thay đổi cách học với Trợ Lý Học Đường.</p>
+          <div style="margin-top: 28px;"><a class="btn btn-primary" href="signup.html">Đăng ký ngay →</a></div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <div class="brand">
+            <div class="brand-mark">H</div> Trợ Lý Học Đường
+          </div>
+          <p class="footer-text">© 2024 Nền tảng Học tập AI Cá nhân hóa. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

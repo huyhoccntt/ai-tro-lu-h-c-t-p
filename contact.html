@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liên hệ - Trợ Lý Học Đường</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="header-inner">
+          <div class="brand">
+            <div class="brand-mark">H</div>
+            <div>Trợ Lý Học Đường</div>
+          </div>
+          <nav class="nav">
+            <a href="index.html#features">Tính năng</a>
+            <a href="index.html#impact">Tác động</a>
+            <a href="index.html#ready">Bắt đầu học</a>
+          </nav>
+          <div class="header-actions">
+            <a href="login.html" class="link-button">Đăng nhập</a>
+            <a href="signup.html" class="btn btn-primary btn-sm">Học thử ngay</a>
+          </div>
+        </div>
+      </header>
+
+      <section class="section bg-soft">
+        <div class="section-title">
+          <h2>Liên hệ với chúng tôi</h2>
+          <p>Gửi thông tin và câu hỏi, chúng tôi sẽ liên hệ lại với bạn sớm nhất.</p>
+        </div>
+        <div class="form-card">
+          <form onsubmit="submitContact(event)">
+            <h3 class="form-title">Form liên hệ</h3>
+            <div class="form-field">
+              <label for="contactName">Họ và tên</label>
+              <input id="contactName" type="text" placeholder="Nhập họ tên" required />
+            </div>
+            <div class="form-field">
+              <label for="contactEmail">Email</label>
+              <input id="contactEmail" type="email" placeholder="Nhập email liên hệ" required />
+            </div>
+            <div class="form-field">
+              <label for="contactMessage">Nội dung</label>
+              <textarea id="contactMessage" placeholder="Nhập câu hỏi hoặc yêu cầu của bạn" required></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Gửi liên hệ</button>
+              <p class="form-note">Chỉ là trang tĩnh, dữ liệu sẽ được lưu trong trình duyệt để demo.</p>
+            </div>
+            <div id="contactMessageBox" class="message-box"></div>
+          </form>
+        </div>
+      </section>
+      <footer class="footer">
+        <div class="footer-inner">
+          <div class="brand">
+            <div class="brand-mark">H</div> Trợ Lý Học Đường
+          </div>
+          <p class="footer-text">© 2024 Nền tảng Học tập AI Cá nhân hóa. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+    <script src="scripts.js" defer></script>
+  </body>
+</html>
